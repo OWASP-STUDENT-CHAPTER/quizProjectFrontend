@@ -59,12 +59,13 @@ const Navbar = () => {
 					<div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
 						<div className="flex-shrink-0">
 							<h1 className="text-xl font-bold text-white">
-								Your Logo
+								{/* LOGO */}
+								<div><img className="w-35 h-12 object-fill" src="../src/assets/L.png" alt="logo"></img></div>
 							</h1>
 						</div>
 						<div className="hidden sm:block sm:ml-6">
 							<div className="flex space-x-4">
-								{/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+								{/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"
 								<a
 									href="#"
 									className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
@@ -88,7 +89,7 @@ const Navbar = () => {
 									className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
 								>
 									Contact
-								</a>
+								</a> */}
 							</div>
 						</div>
 					</div>
