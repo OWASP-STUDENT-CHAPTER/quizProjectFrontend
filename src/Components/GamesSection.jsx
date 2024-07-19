@@ -1,6 +1,5 @@
-import React from "react";
 import GameCard from "../SubComponents/GameCard";
-
+import React from "react";
 
 const GamesSection = () => {
 	// Dummy data for games (replace with actual data)
@@ -26,7 +25,7 @@ const GamesSection = () => {
 	];
 
 	return (
-		<section className="py-12 bg-gray-100">
+		<section className="py-12 bg-white">
 			<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="max-w-4xl mx-auto">
 					<h2 className="mb-6 text-3xl font-bold text-gray-800">

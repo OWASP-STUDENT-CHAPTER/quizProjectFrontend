@@ -2,7 +2,7 @@ import React from "react";
 
 const Result = () => {
 	return (
-		<section className="py-12 bg-gray-100">
+		<section className="py-12 h-screen bg-gray-100">
 			<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="max-w-4xl p-8 mx-auto bg-white rounded-lg shadow-lg">
 					<h2 className="mb-6 text-3xl font-bold text-gray-800">

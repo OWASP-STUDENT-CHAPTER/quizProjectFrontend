@@ -11,7 +11,7 @@ const Question = ({ question, options, selectedOption, onChange }) => {
 					{options.map((option) => (
 						<label
 							key={option.id}
-							className="inline-flex items-center"
+							className="flex items-center"
 						>
 							<input
 								type="radio"

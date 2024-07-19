@@ -2,14 +2,15 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<footer className="text-white bg-gray-800">
+		<footer className="text-black bg-white ">
+		<hr />
 			<div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="lg:flex lg:items-center lg:justify-between">
 					<div className="flex-1 min-w-0">
 						<h2 className="text-2xl font-bold leading-7 text-white sm:text-3xl sm:leading-9 sm:truncate">
 							Footer Title
 						</h2>
-						<p className="mt-2 text-sm text-gray-400">
+						<p className="mt-2 text-sm ">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Nulla eget libero laoreet, gravida odio eget,
 							congue odio.
@@ -17,7 +18,7 @@ const Footer = () => {
 						<div className="flex mt-4 space-x-3">
 							<a
 								href="#"
-								className="text-gray-400 hover:text-white"
+								className=" hover:text-white"
 							>
 								<span className="sr-only">LinkedIn</span>
 								<svg
@@ -34,7 +35,7 @@ const Footer = () => {
 							</a>
 							<a
 								href="#"
-								className="text-gray-400 hover:text-white"
+								className=" hover:text-white"
 							>
 								<span className="sr-only">Twitter</span>
 								<svg
@@ -51,7 +52,7 @@ const Footer = () => {
 							</a>
 							<a
 								href="#"
-								className="text-gray-400 hover:text-white"
+								className=" hover:text-white"
 							>
 								<span className="sr-only">GitHub</span>
 								<svg
@@ -69,7 +70,7 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className="flex mt-5 lg:mt-0 lg:ml-4 lg:flex-shrink-0">
-						<span className="text-sm text-gray-400">
+						<span className="text-sm ">
 							&copy; {new Date().getFullYear()} Your Company. All
 							rights reserved.
 						</span>

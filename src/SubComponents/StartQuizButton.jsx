@@ -16,7 +16,7 @@ const StartQuizButton = () => {
 	};
 
 	return (
-		<div className="flex justify-center my-8">
+		<div className="flex justify-center mt-10">
 			<button
 				onClick={handleStartQuiz}
 				className="px-6 py-3 font-bold text-white bg-indigo-600 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import Question from "../SubComponents/Question";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +23,7 @@ const Questions = () => {
 								{ id: "a", text: "Option A" },
 								{ id: "b", text: "Option B" },
 								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
 							],
 						},
 						{
@@ -31,8 +33,89 @@ const Questions = () => {
 								{ id: "a", text: "Option A" },
 								{ id: "b", text: "Option B" },
 								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
 							],
 						},
+						{
+							id: 3,
+							question: "Question 3?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 4,
+							question: "Question 4?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 5,
+							question: "Question 5?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 6,
+							question: "Question 6?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 7,
+							question: "Question 7?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 8,
+							question: "Question 8?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 9,
+							question: "Question 9?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						},
+						{
+							id: 10,
+							question: "Question 10?",
+							options: [
+								{ id: "a", text: "Option A" },
+								{ id: "b", text: "Option B" },
+								{ id: "c", text: "Option C" },
+								{ id: "d", text: "Option D" },
+							],
+						}
 						// Add more questions here as needed
 					],
 				};
