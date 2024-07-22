@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import { logout } from "../Axios/CommonServices";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [role, setRole] = useState("");
 
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
 	};
 
+	const handleLogout = () => {
+		const confirm = window.confirm("Are You Sure You Want To Logout??");
+		if (confirm) {
+			logout();
+		}
+	};
+
+	useEffect(() => {
+		setRole(localStorage.getItem("role"));
+	}, []);
+
 	return (
-		<nav className="bg-white text-black shadow-lg">
+		<nav className="text-black bg-white shadow-lg">
 			<div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="relative flex items-center justify-between h-16">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 						{/* Mobile menu button */}
 						<button
 							type="button"
-							className="inline-flex items-center justify-center p-2  rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+							className="inline-flex items-center justify-center p-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 							aria-controls="mobile-menu"
 							aria-expanded="false"
 							onClick={toggleNavbar}
@@ -62,9 +75,8 @@ const Navbar = () => {
 						<div className="flex-shrink-0">
 							<h1 className="text-xl font-bold text-white">
 								<div>
-
 									<img
-										className="w-35 h-10 object-fill"
+										className="object-fill h-10 w-35"
 										src="../src/assets/L.png"
 										alt="logo"
 									></img>
@@ -72,31 +84,60 @@ const Navbar = () => {
 							</h1>
 						</div>
 						<div className="hidden sm:block sm:ml-6">
-							<div className="flex space-x-4 my-auto">
+							<div className="flex my-auto space-x-4">
 								<Link
-									to="#"
-									className="px-3 py-2 text-sm font-medium  rounded-md hover:bg-gray-700 hover:text-white"
+									to="/"
+									className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 								>
 									Home
 								</Link>
 								<Link
 									to="#"
-									className="px-3 py-2 text-sm font-medium  rounded-md hover:bg-gray-700 hover:text-white"
+									className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 								>
 									About
 								</Link>
 								<Link
-									to="#"
-									className="px-3 py-2 text-sm font-medium  rounded-md hover:bg-gray-700 hover:text-white"
+									to="/profile"
+									className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 								>
-									Contact
+									Profile
 								</Link>
-								<Link
-									to="/login"
-									className="px-3 py-2 text-sm font-medium  rounded-md hover:bg-gray-700 hover:text-white"
-								>
-									Login
-								</Link>
+								{!role && (
+									<Link
+										to="/login"
+										className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+									>
+										Login
+									</Link>
+								)}
+								{role && (
+									<>
+										{role === "ADMIN" && (
+											<>
+												<Link
+													to="/admin"
+													className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+												>
+													Admin Pannel
+												</Link>
+												<Link
+													to="/register"
+													className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+												>
+													Register
+												</Link>
+											</>
+										)}
+										<Link
+											to="/login"
+											className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+											onClick={handleLogout}
+										>
+											Logout
+										</Link>
+									</>
+								)}
 							</div>
 						</div>
 					</div>
@@ -110,29 +151,58 @@ const Navbar = () => {
 			>
 				<div className="px-2 pt-2 pb-3 space-y-1">
 					<Link
-						to="#"
-						className="block px-3 py-2 text-base font-medium  rounded-md hover:bg-gray-700 hover:text-white"
+						to="/"
+						className="block px-3 py-2 text-base font-medium rounded-md hover:bg-gray-700 hover:text-white"
 					>
 						Home
 					</Link>
 					<Link
 						to="#"
-						className="block px-3 py-2 text-base font-medium  rounded-md hover:bg-gray-700 hover:text-white"
+						className="block px-3 py-2 text-base font-medium rounded-md hover:bg-gray-700 hover:text-white"
 					>
 						About
 					</Link>
 					<Link
-						to="#"
-						className="block px-3 py-2 text-base font-medium  rounded-md hover:bg-gray-700 hover:text-white"
+						to="/profile"
+						className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 					>
-						Contact
+						Profile
 					</Link>
-					<Link
-						to="/login"
-						className="block px-3 py-2 text-base font-medium  rounded-md hover:bg-gray-700 hover:text-white"
-					>
-						Login
-					</Link>
+					{!role && (
+						<Link
+							to="/login"
+							className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+						>
+							Login
+						</Link>
+					)}
+					{role && (
+						<>
+							{role === "ADMIN" && (
+								<>
+									<Link
+										to="/admin"
+										className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+									>
+										Admin Pannel
+									</Link>
+									<Link
+										to="/register"
+										className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+									>
+										Register
+									</Link>
+								</>
+							)}
+							<Link
+								to="/login"
+								className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+								onClick={handleLogout}
+							>
+								Logout
+							</Link>
+						</>
+					)}
 				</div>
 			</div>
 		</nav>

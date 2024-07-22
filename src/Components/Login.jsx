@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { isAuthenticated, login } from "../Axios/CommonServices";
 
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -8,15 +10,35 @@ const Login = () => {
 
 	const navigate = useNavigate();
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Handle login logic here (e.g., send data to server)
-		console.log(`Email: ${email}, Password: ${password}`);
-		// Reset form fields
-		setEmail("");
-		setPassword("");
-        navigate("/")
+		try {
+			const userData = await login(email, password);
+			if (userData) {
+				if (userData.token) {
+					localStorage.setItem("token", userData.token);
+					localStorage.setItem("role", userData.role);
+					localStorage.setItem("email", userData.email);
+					toast("Logged In Successfully");
+					console.log(`Email: ${email}, Password: ${password}`);
+					setEmail("");
+					setPassword("");
+				} else {
+					toast(userData.error);
+				}
+			}
+			navigate("/");
+		} catch (error) {
+			toast(error);
+		}
 	};
+
+	useEffect(() => {
+		const Authenticated = isAuthenticated();
+		if (Authenticated) {
+			navigate("/");
+		}
+	}, []);
 
 	return (
 		<div className="flex flex-col justify-center min-h-screen py-12 bg-white sm:px-6 lg:px-8">
@@ -27,7 +49,7 @@ const Login = () => {
 			</div>
 
 			<div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-				<div className="px-4 py-8 bg-white  sm:rounded-lg sm:px-10">
+				<div className="px-4 py-8 bg-white sm:rounded-lg sm:px-10">
 					<form className="space-y-6" onSubmit={handleSubmit}>
 						<div>
 							<label
