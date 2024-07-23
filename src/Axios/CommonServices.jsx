@@ -21,13 +21,19 @@ export const login = async (email, password) => {
 	}
 };
 
-export const getMyProfile = async (token) => {
+export const getMyProfile = async (email) => {
 	try {
-		const data = await axios.get(`${BASE_URL}/public/getProfile`, {
-			headers: { Authorization: `Bearer${token}` },
-		});
-		toast("Profile Fetched Successfully");
-		console.log(data);
+		const { data } = await axios.get(
+			`${BASE_URL}/public/getProfile/${email}`
+		);
+		if (data.statusCode !== 200) {
+			toast("Profile Cannot Fetched");
+			// console.log(data);
+		} else {
+			toast("Profile Fetched Successfully");
+			// console.log(data);
+		}
+		// console.log(data);
 		return data;
 	} catch (error) {
 		toast(error);
@@ -38,6 +44,8 @@ export const getMyProfile = async (token) => {
 export const logout = () => {
 	localStorage.removeItem("token");
 	localStorage.removeItem("role");
+	localStorage.removeItem("email");
+	localStorage.removeItem("quizId");
 };
 
 export const isAuthenticated = () => {

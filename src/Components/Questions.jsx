@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getQuiz, submitQuizResponses } from "../Axios/StudentServices";
 
 import Question from "../SubComponents/Question";
 import { useNavigate } from "react-router-dom";
@@ -6,124 +7,18 @@ import { useNavigate } from "react-router-dom";
 const Questions = () => {
 	const [questions, setQuestions] = useState([]);
 	const [answers, setAnswers] = useState({});
-
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		// Simulated data fetching (replace with actual backend integration)
 		const fetchQuestions = async () => {
 			try {
-				// Simulated data (replace with actual API call to fetch questions from backend)
-				const data = {
-					questions: [
-						{
-							id: 1,
-							question: "Question 1?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 2,
-							question: "Question 2?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 3,
-							question: "Question 3?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 4,
-							question: "Question 4?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 5,
-							question: "Question 5?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 6,
-							question: "Question 6?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 7,
-							question: "Question 7?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 8,
-							question: "Question 8?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 9,
-							question: "Question 9?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						},
-						{
-							id: 10,
-							question: "Question 10?",
-							options: [
-								{ id: "a", text: "Option A" },
-								{ id: "b", text: "Option B" },
-								{ id: "c", text: "Option C" },
-								{ id: "d", text: "Option D" },
-							],
-						}
-						// Add more questions here as needed
-					],
-				};
-				setQuestions(data.questions);
-				// Initialize answers state with default values
+				const quizId = localStorage.getItem("quizId");
+				const questions = await getQuiz(quizId);
+				setQuestions(questions);
+
 				const initialAnswers = {};
-				data.questions.forEach((question) => {
-					initialAnswers[question.id] = "";
+				questions.forEach((question) => {
+					initialAnswers[question.id] = ""; // Initialize with empty string or null
 				});
 				setAnswers(initialAnswers);
 			} catch (error) {
@@ -137,26 +32,22 @@ const Questions = () => {
 	const handleOptionChange = (questionId, selectedOption) => {
 		setAnswers({ ...answers, [questionId]: selectedOption });
 	};
-    
-	const handleSubmit = () => {
-        // Handle submission of quiz (e.g., send selected answers to backend)
-		console.log("Submitting quiz answers:", answers);
-		// Example logic to validate and process answers
-		const correctAnswers = {
-			1: "a", // Question 1's correct answer is Option A
-			2: "b", // Question 2's correct answer is Option B
-			// Add more correct answers here as needed
-		};
-		let score = 0;
-		questions.forEach((question) => {
-            if (answers[question.id] === correctAnswers[question.id]) {
-                score++;
-			}
-		});
-		console.log("Score:", score);
-		// Reset answers or navigate to next screen
-		// setAnswers({});
-        navigate("/result");
+
+	const handleSubmit = async () => {
+		try {
+			const quizId = localStorage.getItem("quizId");
+			const responses = questions.map((question) => ({
+				id: question.question_id,
+				response: answers[question.question_id],
+			}));
+
+			await submitQuizResponses(quizId, responses);
+
+			navigate("/result"); // Navigate to result page after successful submission
+		} catch (error) {
+			console.error("Error submitting quiz answers:", error);
+			// Handle error appropriately, show error message or retry logic
+		}
 	};
 
 	return (
@@ -166,14 +57,18 @@ const Questions = () => {
 					Quiz Questions
 				</h2>
 				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-					{questions.map((question) => (
+					{questions.map((question, index) => (
 						<Question
-							key={question.id}
+							key={index}
+							id={question.question_id}
 							question={question.question}
-							options={question.options}
-							selectedOption={answers[question.id]}
+							option1={question.option1}
+							option2={question.option2}
+							option3={question.option3}
+							option4={question.option4}
+							selectedOption={answers[question.question_id]}
 							onChange={(selectedOption) =>
-								handleOptionChange(question.id, selectedOption)
+								handleOptionChange(question.question_id, selectedOption)
 							}
 						/>
 					))}

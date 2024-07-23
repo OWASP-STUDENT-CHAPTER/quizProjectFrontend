@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { isAdmin, isAuthenticated } from "./Axios/CommonServices";
 
+import About from "./Components/About";
 import Admin from "./Components/Admin";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
@@ -27,6 +28,7 @@ const App = () => {
 				<Route path="/quiz" element={<Quiz />} />
 				<Route path="/result" element={<Result />} />
 				<Route path="/profile" element={<Profile />} />
+				<Route path="/about" element={<About />} />
 				{isAdmin() && (
 					<>
 						<Route path="/admin" element={<Admin />} />

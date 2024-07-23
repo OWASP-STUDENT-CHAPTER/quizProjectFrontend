@@ -20,14 +20,15 @@ const Login = () => {
 					localStorage.setItem("role", userData.role);
 					localStorage.setItem("email", userData.email);
 					toast("Logged In Successfully");
-					console.log(`Email: ${email}, Password: ${password}`);
+					// console.log(`Email: ${email}, Password: ${password}`);
 					setEmail("");
 					setPassword("");
+					navigate("/");
 				} else {
 					toast(userData.error);
+					navigate("/login");
 				}
 			}
-			navigate("/");
 		} catch (error) {
 			toast(error);
 		}

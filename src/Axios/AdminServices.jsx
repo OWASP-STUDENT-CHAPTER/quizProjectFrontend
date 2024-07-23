@@ -2,7 +2,7 @@ import { BASE_URL } from "./Helper";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const registerStudent = async (userData, token) => {
+export const registerStudent = async (userData) => {
 	try {
 		const { data } = await axios.post(
 			`${BASE_URL}/auth/register`,
@@ -13,7 +13,7 @@ export const registerStudent = async (userData, token) => {
 		} else {
 			toast("Registered Successfully");
 		}
-		console.log(data);
+		// console.log(data);
 		return data;
 	} catch (error) {
 		toast(error);
