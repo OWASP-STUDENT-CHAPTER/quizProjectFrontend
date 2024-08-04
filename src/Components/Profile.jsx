@@ -84,7 +84,7 @@ function Profile() {
 									{profileInfo.rollNo}
 								</dd>
 							</div>
-							{profileInfo.score && (
+							{profileInfo.score !== null && (
 								<div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dt className="text-sm font-medium text-gray-500">
 										Score
@@ -94,7 +94,7 @@ function Profile() {
 									</dd>
 								</div>
 							)}
-							{profileInfo.role === "ADMIN" && (
+							{/* {profileInfo.role === "ADMIN" && (
 								<div className="px-4 py-4 bg-gray-50 sm:px-6">
 									<button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
 										<Link
@@ -104,7 +104,7 @@ function Profile() {
 										</Link>
 									</button>
 								</div>
-							)}
+							)} */}
 						</dl>
 					</div>
 				</div>

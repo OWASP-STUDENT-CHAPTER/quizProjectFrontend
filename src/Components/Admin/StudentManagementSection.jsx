@@ -5,7 +5,7 @@ import { deleteStudent, getAllStudent } from "../../Axios/AdminServices";
 
 import { Link } from "react-router-dom";
 
-function UserManagementPage() {
+function StudentManagementSection() {
 	const [users, setUsers] = useState([]);
 
 	useEffect(() => {
@@ -15,10 +15,9 @@ function UserManagementPage() {
 
 	const fetchUsers = async () => {
 		try {
-			const token = localStorage.getItem("token"); // Retrieve the token from localStorage
-			const response = await getAllStudent(token);
-			//   console.log(response);
-			setUsers(response.ourUsersList); // Assuming the list of users is under the key 'ourUsersList'
+			const response = await getAllStudent();
+			console.log(response.studentList);
+			setUsers(response.studentList); // Assuming the list of users is under the key 'ourUsersList'
 		} catch (error) {
 			console.error("Error fetching users:", error);
 		}
@@ -31,9 +30,8 @@ function UserManagementPage() {
 				"Are you sure you want to delete this user?"
 			);
 
-			const token = localStorage.getItem("token"); // Retrieve the token from localStorage
 			if (confirmDelete) {
-				await deleteStudent(userId, token);
+				await deleteStudent(userId);
 				// After deleting the user, fetch the updated list of users
 				fetchUsers();
 			}
@@ -43,46 +41,65 @@ function UserManagementPage() {
 	};
 
 	return (
-		<div className="user-management-container">
-			<h2>Users Management Page</h2>
-			<button className="reg-button">
-				{" "}
-				<Link to="/register">Add User</Link>
-			</button>
-			<table>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{users.map((user) => (
-						<tr key={user.id}>
-							<td>{user.id}</td>
-							<td>{user.name}</td>
-							<td>{user.email}</td>
-							<td>
+		<div className="min-h-screen p-6 bg-gray-100 user-management-container">
+			<h2 className="mb-4 text-2xl font-bold">Student Management Page</h2>
+
+			<div className="mb-6">
+				<button className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+					<Link to="/register">Add User</Link>
+				</button>
+			</div>
+
+			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+				{users &&
+					users.map((user, index) => (
+						<div
+							key={index}
+							className="p-4 bg-white rounded shadow-md"
+						>
+							
+							<h3 className="mb-2 text-xl font-semibold">
+								{user.name}
+							</h3>
+							<p className="mb-1 text-gray-700">
+								<strong>Email:</strong> {user.email}
+							</p>
+							<p className="mb-1 text-gray-700">
+								<strong>Gender:</strong> {user.gender}
+							</p>
+							<p className="mb-1 text-gray-700">
+								<strong>Role:</strong> {user.role}
+							</p>
+							<p className="mb-1 text-gray-700">
+								<strong>Branch:</strong> {user.branch}
+							</p>
+							<p className="mb-1 text-gray-700">
+								<strong>Roll No:</strong> {user.rollNo}
+							</p>
+							<p className="mb-1 text-gray-700">
+								<strong>Score:</strong> {(user.score === 0 && "0") || (user.score || "Not Given Yet")}
+							</p>
+							<p className="mb-4 text-gray-700">
+								<strong>Student ID:</strong> {user.studentId}
+							</p>
+							<div className="flex space-x-2">
 								<button
-									className="delete-button"
-									onClick={() => deleteUser(user.id)}
+									className="px-3 py-1 text-white bg-red-500 rounded hover:bg-red-600"
+									onClick={() => deleteUser(user.studentId)}
 								>
 									Delete
 								</button>
-								<button>
-									<Link to={`/update-user/${user.id}`}>
+								{/* <button className="px-3 py-1 text-white bg-yellow-500 rounded hover:bg-yellow-600">
+									<Link to={`/update-user/${user.studentId}`}>
 										Update
 									</Link>
-								</button>
-							</td>
-						</tr>
+								</button> */}
+							</div>
+						</div>
 					))}
-				</tbody>
-			</table>
+			</div>
 		</div>
 	);
 }
 
-export default UserManagementPage;
+export default StudentManagementSection;

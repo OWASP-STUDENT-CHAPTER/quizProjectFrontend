@@ -11,6 +11,7 @@ import Quiz from "./Components/Quiz";
 import Register from "./Components/Admin/Register";
 import Result from "./Components/Result";
 import { ToastContainer } from "react-toastify";
+import UpdateStudent from "./Components/Admin/UpdateStudent";
 
 const App = () => {
 	const navigate = useNavigate();
@@ -33,6 +34,7 @@ const App = () => {
 					<>
 						<Route path="/admin" element={<Admin />} />
 						<Route path="/register" element={<Register />} />
+						<Route path="/update-user/:studentId" element={<UpdateStudent />} />
 					</>
 				)}
 				<Route path="*" element={<Login />} />

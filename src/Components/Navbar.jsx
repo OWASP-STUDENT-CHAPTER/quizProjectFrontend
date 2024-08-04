@@ -23,7 +23,7 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<nav className="text-black bg-white shadow-lg">
+		<nav className="sticky top-0 left-0 text-black bg-white shadow-lgn">
 			<div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="relative flex items-center justify-between h-16">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -121,12 +121,12 @@ const Navbar = () => {
 												>
 													Admin Pannel
 												</Link>
-												<Link
+												{/* <Link
 													to="/register"
 													className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 												>
 													Register
-												</Link>
+												</Link> */}
 											</>
 										)}
 										<Link
@@ -164,14 +164,14 @@ const Navbar = () => {
 					</Link>
 					<Link
 						to="/profile"
-						className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+						className="block px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 					>
 						Profile
 					</Link>
 					{!role && (
 						<Link
 							to="/login"
-							className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+							className="block px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 						>
 							Login
 						</Link>
@@ -182,21 +182,21 @@ const Navbar = () => {
 								<>
 									<Link
 										to="/admin"
-										className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+										className="block px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 									>
 										Admin Pannel
 									</Link>
-									<Link
+									{/* <Link
 										to="/register"
-										className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+										className="block px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 									>
 										Register
-									</Link>
+									</Link> */}
 								</>
 							)}
 							<Link
 								to="/login"
-								className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+								className="block px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
 								onClick={handleLogout}
 							>
 								Logout

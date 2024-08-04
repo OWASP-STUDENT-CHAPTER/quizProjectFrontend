@@ -23,10 +23,9 @@ export const registerStudent = async (userData) => {
 
 export const getAllStudent = async (token) => {
 	try {
-		const { data } = await axios.get(`${BASE_URL}/admin/getAllStudents`, {
-			headers: { Authorization: `Bearer${token}` },
-		});
+		const { data } = await axios.get(`${BASE_URL}/public/getAllStudents`);
 		toast("All Students Fetched Successfully");
+		// console.log(data);
 		return data;
 	} catch (error) {
 		toast(error);
@@ -34,13 +33,10 @@ export const getAllStudent = async (token) => {
 	}
 };
 
-export const getStudentById = async (studentId, token) => {
+export const getStudentById = async (studentId) => {
 	try {
 		const { data } = await axios.get(
-			`${BASE_URL}/admin/get-users/${studentId}`,
-			{
-				headers: { Authorization: `Bearer${token}` },
-			}
+			`${BASE_URL}/public/getUser/${studentId}`
 		);
 		toast("Student Fetched Successfully");
 		return data;
@@ -50,13 +46,10 @@ export const getStudentById = async (studentId, token) => {
 	}
 };
 
-export const deleteStudent = async (studentId, token) => {
+export const deleteStudent = async (studentId) => {
 	try {
 		const { data } = await axios.delete(
-			`${BASE_URL}/admin/delete/${studentId}`,
-			{
-				headers: { Authorization: `Bearer${token}` },
-			}
+			`${BASE_URL}/public/delete/${studentId}`
 		);
 		toast("Student Deleted Successfully");
 		return data;
@@ -69,12 +62,13 @@ export const deleteStudent = async (studentId, token) => {
 export const updateStudent = async (studentId, userData, token) => {
 	try {
 		const { data } = await axios.put(
-			`${BASE_URL}/admin/update/${studentId}`,
+			`${BASE_URL}/public/update/${studentId}`,
 			userData,
 			{
 				headers: { Authorization: `Bearer${token}` },
 			}
 		);
+		console.log(data);
 		toast("Student Updated Successfully");
 		return data;
 	} catch (error) {

@@ -18,8 +18,9 @@ const Questions = () => {
 
 				const initialAnswers = {};
 				questions.forEach((question) => {
-					initialAnswers[question.id] = ""; // Initialize with empty string or null
+					initialAnswers[question._id] = "qwertyui"; // Initialize with empty string or null
 				});
+				console.log(initialAnswers);
 				setAnswers(initialAnswers);
 			} catch (error) {
 				console.error("Error fetching questions:", error);
@@ -68,7 +69,10 @@ const Questions = () => {
 							option4={question.option4}
 							selectedOption={answers[question.question_id]}
 							onChange={(selectedOption) =>
-								handleOptionChange(question.question_id, selectedOption)
+								handleOptionChange(
+									question.question_id,
+									selectedOption
+								)
 							}
 						/>
 					))}
