@@ -5,7 +5,7 @@ import StudentManagementSection from "./Admin/StudentManagementSection";
 
 const Admin = () => {
 	return (
-		<div>
+		<div className="bg-black">
 			<Navbar />
 			<StudentManagementSection />
 			<Footer />

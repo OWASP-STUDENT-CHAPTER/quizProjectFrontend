@@ -52,9 +52,9 @@ const EditStudentPage = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const token = localStorage.getItem("token");
+			const token = sessionStorage.getItem("token");
 			await updateStudent(studentId, student, token);
-			console.log(student);
+			// console.log(student);
 			navigate("/admin"); // Redirect after updating
 		} catch (error) {
 			console.error("Error updating student:", error);

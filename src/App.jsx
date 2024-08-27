@@ -6,6 +6,7 @@ import About from "./Components/About";
 import Admin from "./Components/Admin";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
+import NotFound from "./Components/NotFound";
 import Profile from "./Components/Profile";
 import Quiz from "./Components/Quiz";
 import Register from "./Components/Admin/Register";
@@ -34,10 +35,13 @@ const App = () => {
 					<>
 						<Route path="/admin" element={<Admin />} />
 						<Route path="/register" element={<Register />} />
-						<Route path="/update-user/:studentId" element={<UpdateStudent />} />
+						<Route
+							path="/update-user/:studentId"
+							element={<UpdateStudent />}
+						/>
 					</>
 				)}
-				<Route path="*" element={<Login />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<ToastContainer />
 		</>

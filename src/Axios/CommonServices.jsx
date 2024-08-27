@@ -9,14 +9,14 @@ export const login = async (email, password) => {
 			password,
 		});
 		if (data.statusCode === 500) {
-			toast("User Doesn't Exist");
+			toast.error("User Doesn't Exist");
 		} else if (data.Email && data.Password) {
-			toast("Logged In Successfully");
+			toast.success("Logged In Successfully");
 		}
 		// console.log(data);
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
@@ -27,39 +27,40 @@ export const getMyProfile = async (email) => {
 			`${BASE_URL}/public/getProfile/${email}`
 		);
 		if (data.statusCode !== 200) {
-			toast("Profile Cannot Fetched");
+			toast.error("Profile Cannot Fetched");
 			// console.log(data);
 		} else {
-			toast("Profile Fetched Successfully");
+			// toast.success("Profile Fetched Successfully");
 			// console.log(data);
 		}
 		// console.log(data);
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
 
 export const logout = () => {
-	localStorage.removeItem("token");
-	localStorage.removeItem("role");
-	localStorage.removeItem("email");
-	localStorage.removeItem("quizId");
+	sessionStorage.removeItem("token");
+	sessionStorage.removeItem("role");
+	sessionStorage.removeItem("email");
+	sessionStorage.removeItem("quizId");
+	sessionStorage.removeItem("score");
 };
 
 export const isAuthenticated = () => {
-	const token = localStorage.getItem("token");
+	const token = sessionStorage.getItem("token");
 	return !!token;
 };
 
 export const isAdmin = () => {
-	const role = localStorage.getItem("role");
+	const role = sessionStorage.getItem("role");
 	return role === "ADMIN";
 };
 
 export const isUser = () => {
-	const role = localStorage.getItem("role");
+	const role = sessionStorage.getItem("role");
 	return role === "USER";
 };
 

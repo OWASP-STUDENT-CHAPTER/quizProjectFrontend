@@ -16,7 +16,7 @@ function StudentManagementSection() {
 	const fetchUsers = async () => {
 		try {
 			const response = await getAllStudent();
-			console.log(response.studentList);
+			// console.log(response.studentList);
 			setUsers(response.studentList); // Assuming the list of users is under the key 'ourUsersList'
 		} catch (error) {
 			console.error("Error fetching users:", error);
@@ -41,7 +41,7 @@ function StudentManagementSection() {
 	};
 
 	return (
-		<div className="min-h-screen p-6 bg-gray-100 user-management-container">
+		<div className="min-h-screen p-6  text-white user-management-container">
 			<h2 className="mb-4 text-2xl font-bold">Student Management Page</h2>
 
 			<div className="mb-6">
@@ -58,7 +58,7 @@ function StudentManagementSection() {
 							className="p-4 bg-white rounded shadow-md"
 						>
 							
-							<h3 className="mb-2 text-xl font-semibold">
+							<h3 className="mb-2 text-xl text-black font-semibold">
 								{user.name}
 							</h3>
 							<p className="mb-1 text-gray-700">

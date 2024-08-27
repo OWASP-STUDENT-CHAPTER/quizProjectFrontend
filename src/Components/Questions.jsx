@@ -12,7 +12,7 @@ const Questions = () => {
 	useEffect(() => {
 		const fetchQuestions = async () => {
 			try {
-				const quizId = localStorage.getItem("quizId");
+				const quizId = sessionStorage.getItem("quizId");
 				const questions = await getQuiz(quizId);
 				setQuestions(questions);
 
@@ -20,7 +20,7 @@ const Questions = () => {
 				questions.forEach((question) => {
 					initialAnswers[question._id] = "qwertyui"; // Initialize with empty string or null
 				});
-				console.log(initialAnswers);
+				// console.log(initialAnswers);
 				setAnswers(initialAnswers);
 			} catch (error) {
 				console.error("Error fetching questions:", error);
@@ -36,7 +36,7 @@ const Questions = () => {
 
 	const handleSubmit = async () => {
 		try {
-			const quizId = localStorage.getItem("quizId");
+			const quizId = sessionStorage.getItem("quizId");
 			const responses = questions.map((question) => ({
 				id: question.question_id,
 				response: answers[question.question_id],
@@ -52,9 +52,9 @@ const Questions = () => {
 	};
 
 	return (
-		<section className="py-12 bg-gray-100">
+		<section className="py-12 bg-black">
 			<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-				<h2 className="mb-6 text-3xl font-bold text-gray-800">
+				<h2 className="mb-6 text-3xl font-bold text-white">
 					Quiz Questions
 				</h2>
 				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -80,7 +80,7 @@ const Questions = () => {
 				<div className="flex justify-center mt-8">
 					<button
 						onClick={handleSubmit}
-						className="px-6 py-3 font-bold text-white bg-indigo-600 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						className="px-6 shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 w-full z-30 py-3 bg-gray-400 rounded-md text-white hover:text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-gray-600 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 text-xl"
 					>
 						Submit Quiz
 					</button>

@@ -9,14 +9,14 @@ export const registerStudent = async (userData) => {
 			userData
 		);
 		if (data.statusCode !== 201) {
-			toast("User Doesn't Saved");
+			toast.error("User Doesn't Saved");
 		} else {
-			toast("Registered Successfully");
+			toast.success("Registered Successfully");
 		}
 		// console.log(data);
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
@@ -24,11 +24,11 @@ export const registerStudent = async (userData) => {
 export const getAllStudent = async (token) => {
 	try {
 		const { data } = await axios.get(`${BASE_URL}/public/getAllStudents`);
-		toast("All Students Fetched Successfully");
+		toast.success("All Students Fetched Successfully");
 		// console.log(data);
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
@@ -38,10 +38,10 @@ export const getStudentById = async (studentId) => {
 		const { data } = await axios.get(
 			`${BASE_URL}/public/getUser/${studentId}`
 		);
-		toast("Student Fetched Successfully");
+		toast.success("Student Fetched Successfully");
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
@@ -51,10 +51,10 @@ export const deleteStudent = async (studentId) => {
 		const { data } = await axios.delete(
 			`${BASE_URL}/public/delete/${studentId}`
 		);
-		toast("Student Deleted Successfully");
+		toast.error("Student Deleted Successfully");
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
@@ -68,11 +68,11 @@ export const updateStudent = async (studentId, userData, token) => {
 				headers: { Authorization: `Bearer${token}` },
 			}
 		);
-		console.log(data);
-		toast("Student Updated Successfully");
+		// console.log(data);
+		toast.success("Student Updated Successfully");
 		return data;
 	} catch (error) {
-		toast(error);
+		toast.error(error);
 		return null;
 	}
 };
