@@ -10,7 +10,7 @@ const Home = () => {
 		<div className="relative">
 			<div className="absolute inset-0">
 				{/* <video
-					className="w-full h-full object-cover"
+					className="object-cover w-full h-full"
 					autoPlay
 					muted
 					loop
@@ -39,12 +39,12 @@ const Home = () => {
 					Your browser does not support the video tag.
 				</video> */}
 				<img
-					src="https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+					// src="https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611955/background2_hlpzkh.jpg"
 					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611956/background3_ey0mav.jpg"
-					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611957/background_p8lfo6.jpg"
+					src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611957/background_p8lfo6.jpg"
 					alt="Background"
-					className="w-full h-full object-cover"
+					className="fixed object-cover w-full h-full"
 				/>
 			</div>
 			<div className="relative z-10">

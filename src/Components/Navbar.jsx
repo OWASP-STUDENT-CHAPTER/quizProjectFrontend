@@ -25,7 +25,7 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<nav className="sticky top-0 left-0 text-black bg-[#ffffff80] z-50 shadow-lg shadow-[#ffffff80] w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-0 ">
+		<nav className="sticky top-0 left-0 text-black bg-[#b6b6b680] z-50 shadow-lg shadow-[#ffffff80] w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-0 ">
 			<div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="relative flex items-center justify-between h-16">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -79,7 +79,7 @@ const Navbar = () => {
 								<div>
 									<img
 										className="object-fill h-10 w-35"
-										src="../src/assets/L.png"
+										src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611957/L_fkunmj.png"
 										alt="logo"
 									></img>
 								</div>
@@ -89,26 +89,26 @@ const Navbar = () => {
 							<div className="flex my-auto space-x-4">
 								<Link
 									to="/"
-									className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+									className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 								>
 									Home
 								</Link>
 								{/* <Link
 									to="/about"
-									className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+									className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 								>
 									About
 								</Link> */}
 								<Link
 									to="/profile"
-									className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+									className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 								>
 									Profile
 								</Link>
 								{!role && (
 									<Link
 										to="/login"
-										className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+										className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 									>
 										Login
 									</Link>
@@ -119,20 +119,20 @@ const Navbar = () => {
 											<>
 												<Link
 													to="/admin"
-													className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+													className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 												>
 													Admin Pannel
 												</Link>
 												{/* <Link
 													to="/register"
-													className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+													className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 												>
 													Register
 												</Link> */}
 											</>
 										)}
 										<Link
-											className="px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+											className="px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 											to="/login"
 											onClick={handleLogout}
 										>
@@ -166,26 +166,26 @@ const Navbar = () => {
 				<div className="px-2 pt-2 pb-3 space-y-1">
 					<Link
 						to="/"
-						className="block px-5 py-2 text-base font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+						className="block px-5 py-2 mx-2 text-base font-medium border-2 border-transparent rounded-md hover:border-black"
 					>
 						Home
 					</Link>
 					{/* <Link
 						to="/about"
-						className="block px-5 py-2 text-base font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+						className="block px-5 py-2 mx-2 text-base font-medium border-2 border-transparent rounded-md hover:border-black"
 					>
 						About
 					</Link> */}
 					<Link
 						to="/profile"
-						className="block px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+						className="block px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 					>
 						Profile
 					</Link>
 					{!role && (
 						<Link
 							to="/login"
-							className="block px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+							className="block px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 						>
 							Login
 						</Link>
@@ -196,7 +196,7 @@ const Navbar = () => {
 								<>
 									<Link
 										to="/admin"
-										className="block px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+										className="block px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 									>
 										Admin Pannel
 									</Link>
@@ -204,7 +204,7 @@ const Navbar = () => {
 							)}
 							<Link
 								to="/login"
-								className="block px-5 py-2 text-sm font-medium rounded-md hover:border-black border-transparent mx-2 border-2"
+								className="block px-5 py-2 mx-2 text-sm font-medium border-2 border-transparent rounded-md hover:border-black"
 								onClick={handleLogout}
 							>
 								Logout

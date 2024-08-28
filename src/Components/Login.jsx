@@ -52,10 +52,10 @@ const Login = () => {
 
 	return (
 		<>
-			<div className="relative min-h-screen flex items-center justify-center bg-gray-900">
+			<div className="relative flex items-center justify-center min-h-screen bg-gray-900">
 				<div className="absolute inset-0">
 					<video
-						className="w-full h-full object-cover"
+						className="object-cover w-full h-full"
 						autoPlay
 						muted
 						loop
@@ -63,7 +63,7 @@ const Login = () => {
 					>
 						{/* <source src="https://cdn.pixabay.com/video/2022/12/13/142815-780943566_large.mp4" type="video/mp4" /> */}
 						<source
-							src="https://res.cloudinary.com/dioelwfec/video/upload/v1724650237/9694810-hd_1920_1080_25fps_n0zwty.mp4"
+							src="https://res.cloudinary.com/dioelwfec/video/upload/v1724859350/final_iucf4w.mp4"
 							type="video/mp4"
 							loop
 							autoPlay
@@ -80,12 +80,12 @@ const Login = () => {
 						// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611956/background3_ey0mav.jpg"
 						// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611957/background_p8lfo6.jpg"
 						alt="Background"
-						className="w-full h-full object-cover"
+						className="object-cover w-full h-full"
 					/> */}
 				</div>
 
 				<div className="relative z-10  shadow-lg shadow-[#ffffff75] p-8 rounded-lg x max-w-screen-sm h-full bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100">
-					<div className="flex justify-center items-center">
+					<div className="flex items-center justify-center">
 						<img
 							// src="https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 							// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611955/background2_hlpzkh.jpg"
@@ -93,7 +93,7 @@ const Login = () => {
 							src="https://res.cloudinary.com/dioelwfec/image/upload/v1724696264/owaspWhite_1_c7miif.png"
 							// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611957/background_p8lfo6.jpg"
 							alt="Background"
-							className="h-full object-cover w-72"
+							className="object-cover h-full w-72"
 						/>
 					</div>
 					<div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -148,7 +148,7 @@ const Login = () => {
 						</div>
 						<button
 							type="submit"
-							// className="flex justify-center w-full px-4 py-2 text-md font-medium text-white bg-gray-500	 border border-transparent rounded-xl shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							// className="flex justify-center w-full px-4 py-2 font-medium text-white bg-gray-500 border border-transparent shadow-sm text-md rounded-xl hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 							className="w-full z-30 py-3 bg-gray-400 rounded-md text-white hover:text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-gray-600 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 text-xl"
 						>
 							Sign in
