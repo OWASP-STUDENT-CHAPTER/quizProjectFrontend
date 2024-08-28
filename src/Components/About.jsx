@@ -7,26 +7,29 @@ const About = () => {
 		<>
 			{/* <Navbar /> */}
 			<div className="max-w-4xl px-4 py-8 mx-auto text-white">
-				<h1 className="mb-4 text-3xl font-bold">About Our Society</h1>
-				<p className="leading-relaxed ">
-					Welcome to our society! We are dedicated to [describe the
-					purpose or mission of your society]. Lorem ipsum dolor sit
-					amet, consectetur adipiscing elit. Nullam eu pulvinar risus,
-					id vestibulum est. Donec mattis, turpis non euismod luctus,
-					velit lorem fringilla augue, nec ornare libero nisi at
-					lectus. Etiam a quam. Creative incididunt ut labore et
-					dolore magna aliqua Ut enim ad minim veniam quis nostrud
-					exercitation ullamco laboris
-				</p>
-
-				<div className="mt-8 text-white">
+				<div className="p-6 bg-[#515151dd] border-2 rounded-xl ">
+					<h1 className="mb-4 text-3xl font-bold">
+						About Our Society
+					</h1>
+					<p className="leading-relaxed ">
+						Welcome to our society! We are dedicated to [describe
+						the purpose or mission of your society]. Lorem ipsum
+						dolor sit amet, consectetur adipiscing elit. Nullam eu
+						pulvinar risus, id vestibulum est. Donec mattis, turpis
+						non euismod luctus, velit lorem fringilla augue, nec
+						ornare libero nisi at lectus. Etiam a quam. Creative
+						incididunt ut labore et dolore magna aliqua Ut enim ad
+						minim veniam quis nostrud exercitation ullamco laboris
+					</p>
+				</div>
+				{/* <div className="mt-8 text-white">
 					<h2 className="mb-4 text-2xl font-bold">Our Goals</h2>
-					<ul className=" list-disc list-inside">
+					<ul className="list-disc list-inside ">
 						<li>Goal 1: [Describe your first goal]</li>
 						<li>Goal 2: [Describe your second goal]</li>
 						<li>Goal 3: [Describe your third goal]</li>
 					</ul>
-				</div>
+				</div> */}
 
 				<div className="mt-8 text-white">
 					<h2 className="mb-4 text-2xl font-bold">Contact Us</h2>
