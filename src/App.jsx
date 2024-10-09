@@ -22,6 +22,32 @@ const App = () => {
 			navigate("/login");
 		}
 	}, []);
+
+	useEffect(() => {
+		// Function to handle F5 and Ctrl+R key presses
+		const handleKeyPress = (event) => {
+			if (event.key === "F5" || (event.ctrlKey && event.key === "r")) {
+				event.preventDefault(); // Prevent the default refresh behavior
+				alert("Refreshing is disabled!"); // Optional: Alert the user that refreshing is disabled
+			}
+		};
+
+		// Function to handle beforeunload (browser refresh or tab close)
+		const handleBeforeUnload = (event) => {
+			event.preventDefault();
+			event.returnValue = ""; // This triggers the browser's default warning dialog
+		};
+
+		// Add event listeners
+		window.addEventListener("keydown", handleKeyPress);
+		window.addEventListener("beforeunload", handleBeforeUnload);
+
+		// Clean up event listeners when the component unmounts
+		return () => {
+			window.removeEventListener("keydown", handleKeyPress);
+			window.removeEventListener("beforeunload", handleBeforeUnload);
+		};
+	}, []);
 	return (
 		<>
 			<Routes>

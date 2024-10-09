@@ -26,7 +26,7 @@ function Profile() {
 
 	return (
 		<>
-			<div className="h-screen bg-black ">
+			<div className="bg-black ">
 				<Navbar />
 				<div className="px-4 mx-auto mt-5 sm:px-6 lg:px-8">
 					<div className="overflow-hidden bg-white rounded-lg shadow">

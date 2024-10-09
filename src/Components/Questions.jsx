@@ -9,6 +9,36 @@ const Questions = () => {
 	const [answers, setAnswers] = useState({});
 	const navigate = useNavigate();
 
+	// Initialize timer state with 600 seconds (10 minutes)
+	const [timeLeft, setTimeLeft] = useState(600);
+
+	// Format time as mm:ss
+	const formatTime = (seconds) => {
+		const minutes = Math.floor(seconds / 60);
+		const secs = seconds % 60;
+		return `${minutes.toString().padStart(2, "0")}:${secs
+			.toString()
+			.padStart(2, "0")}`;
+	};
+
+	useEffect(() => {
+		// Set interval to count down every second
+		const interval = setInterval(() => {
+			setTimeLeft((prevTime) => {
+				if (prevTime > 1) {
+					return prevTime - 1;
+				} else {
+					clearInterval(interval);
+					handleSubmit(); // Call the function when time is up
+					return 0;
+				}
+			});
+		}, 1000);
+
+		// Clear the interval when component unmounts
+		return () => clearInterval(interval);
+	}, []);
+
 	useEffect(() => {
 		const fetchQuestions = async () => {
 			try {
@@ -52,7 +82,17 @@ const Questions = () => {
 	};
 
 	return (
-		<section className="py-12 bg-black">
+		<section className="relative py-12 bg-black">
+			<div className="fixed top-0 left-[50%] -translate-x-[50%] flex items-center justify-center">
+				<div className="w-full max-w-sm p-3 text-center bg-[#ffffff40] shadow-lg rounded-xl">
+					<h1 className="text-xl font-bold text-gray-500 sm:text-2xl md:text-3xl">
+						Time Remaining
+					</h1>
+					<div className="font-mono text-3xl text-black sm:text-4xl md:text-5xl">
+						{formatTime(timeLeft)}
+					</div>
+				</div>
+			</div>
 			<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<h2 className="mb-6 text-3xl font-bold text-white">
 					Quiz Questions
