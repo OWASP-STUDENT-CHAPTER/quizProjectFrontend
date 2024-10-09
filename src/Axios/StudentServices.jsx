@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const createQuiz = async (email, token) => {
 	try {
 		const { data } = await axios.post(
-			`${BASE_URL}/public/quiz/create?category=Programming&numQ=20&title=${email}`
+			`${BASE_URL}/public/quiz/create?category=Programming&numQ=10&title=${email}`
 		);
 		// console.log(data);
 		toast.success("Quiz Created Successfully");

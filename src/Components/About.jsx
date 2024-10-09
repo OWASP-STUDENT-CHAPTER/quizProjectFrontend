@@ -9,27 +9,23 @@ const About = () => {
 			<div className="max-w-4xl px-4 py-8 mx-auto text-white">
 				<div className="p-6 bg-[#515151dd] border-2 rounded-xl ">
 					<h1 className="mb-4 text-3xl font-bold">
-						About Our Society
+						About OWASP - Open Worldwide Application and Security
+						Project
 					</h1>
 					<p className="leading-relaxed ">
-						Welcome to our society! We are dedicated to [describe
-						the purpose or mission of your society]. Lorem ipsum
-						dolor sit amet, consectetur adipiscing elit. Nullam eu
-						pulvinar risus, id vestibulum est. Donec mattis, turpis
-						non euismod luctus, velit lorem fringilla augue, nec
-						ornare libero nisi at lectus. Etiam a quam. Creative
-						incididunt ut labore et dolore magna aliqua Ut enim ad
-						minim veniam quis nostrud exercitation ullamco laboris
+						Thapar Institute of Engineering and Technology (TIET)
+						has been a steady source of highly skilled talent to the
+						nation as well as overseas. A pioneer in engineering
+						education, research and innovation. The team of OWASP
+						Student Chapter, one of the gilt-edged coding society,
+						involves ingenious mind solvers who are eager to make
+						the world a better place to live in with their
+						innovative techniques and discoveries. By successfully
+						organizing many hackathons, tech-talks, workshops and
+						coding nights, we have always strived hard to maintain
+						the coding culture throughout the campus.
 					</p>
 				</div>
-				{/* <div className="mt-8 text-white">
-					<h2 className="mb-4 text-2xl font-bold">Our Goals</h2>
-					<ul className="list-disc list-inside ">
-						<li>Goal 1: [Describe your first goal]</li>
-						<li>Goal 2: [Describe your second goal]</li>
-						<li>Goal 3: [Describe your third goal]</li>
-					</ul>
-				</div> */}
 
 				<div className="mt-8 text-white">
 					<h2 className="mb-4 text-2xl font-bold">Contact Us</h2>

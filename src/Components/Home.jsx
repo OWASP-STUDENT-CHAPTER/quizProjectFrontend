@@ -45,10 +45,10 @@ const Home = () => {
 					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724611957/background_p8lfo6.jpg"
 					// src="https://t4.ftcdn.net/jpg/02/73/71/39/240_F_273713901_NsBaKqBizJTxzCkRgMUqsh1LCmIRrMR4.jpg"
 					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724865220/88e51123-dfd4-4561-94e3-667d211188c6_j1ynyo.jpg"
-					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724865220/fcdfb8dd-9862-45a2-a423-e2f5e0ef5c5f_zvme49.jpg"
-					src="https://res.cloudinary.com/dioelwfec/image/upload/v1724865847/White_hexagon_wallpaper_by_Bertil_Hansen_-_Download_on_ZEDGE___f71d_pkzjmj_a_-90_a_vflip_zhlspy.jpg"
+					src="https://res.cloudinary.com/dioelwfec/image/upload/v1724865220/fcdfb8dd-9862-45a2-a423-e2f5e0ef5c5f_zvme49.jpg"
+					// src="https://res.cloudinary.com/dioelwfec/image/upload/v1724865847/White_hexagon_wallpaper_by_Bertil_Hansen_-_Download_on_ZEDGE___f71d_pkzjmj_a_-90_a_vflip_zhlspy.jpg"
 					alt="Background"
-					className="object-cover object-center w-full h-full "
+					className=" object-cover w-full h-full "
 				/>
 			</div>
 			<div className="relative z-10">
