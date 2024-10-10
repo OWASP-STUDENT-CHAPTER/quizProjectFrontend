@@ -71,7 +71,7 @@ const Questions = () => {
 				id: question.question_id,
 				response: answers[question.question_id],
 			}));
-
+			// console.log(responses)
 			await submitQuizResponses(quizId, responses);
 
 			navigate("/result"); // Navigate to result page after successful submission
@@ -98,7 +98,7 @@ const Questions = () => {
 					Quiz Questions
 				</h2>
 				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-					{questions.map((question, index) => (
+					{questions && questions.map((question, index) => (
 						<Question
 							key={index}
 							id={question.question_id}
@@ -120,7 +120,7 @@ const Questions = () => {
 				<div className="flex justify-center mt-8">
 					<button
 						onClick={handleSubmit}
-						className="px-6 shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 w-full z-30 py-3 bg-gray-400 rounded-md text-white hover:text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-gray-600 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 text-xl"
+						className="px-6 shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 w-full z-10 py-3 bg-gray-400 rounded-md text-white hover:text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-gray-600 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 text-xl"
 					>
 						Submit Quiz
 					</button>

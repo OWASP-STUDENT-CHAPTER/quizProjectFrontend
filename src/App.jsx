@@ -48,12 +48,15 @@ const App = () => {
 			window.removeEventListener("beforeunload", handleBeforeUnload);
 		};
 	}, []);
+
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
+				{/* {score == null ? ( */}
 				<Route path="/quiz" element={<Quiz />} />
+				{/* ) : null} */}
 				<Route path="/result" element={<Result />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/about" element={<About />} />
