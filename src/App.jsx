@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { isAdmin, isAuthenticated } from "./Axios/CommonServices";
 
@@ -16,6 +16,7 @@ import UpdateStudent from "./Components/Admin/UpdateStudent";
 
 const App = () => {
 	const navigate = useNavigate();
+	// const [isQuizStarted, setIsQuizStarted] = useState(10);
 	useEffect(() => {
 		const Authenticated = isAuthenticated();
 		if (!Authenticated) {
@@ -49,14 +50,23 @@ const App = () => {
 		};
 	}, []);
 
+	// console.log(isQuizStarted);
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
-				{/* {score == null ? ( */}
-				<Route path="/quiz" element={<Quiz />} />
-				{/* ) : null} */}
+				{/* {isQuizStarted <= 100 && ( */}
+				<Route
+					path="/quiz"
+					element={
+						<Quiz
+						// isQuizStarted={isQuizStarted}
+						// setIsQuizStarted={setIsQuizStarted}
+						/>
+					}
+				/>
+				{/* )} */}
 				<Route path="/result" element={<Result />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/about" element={<About />} />

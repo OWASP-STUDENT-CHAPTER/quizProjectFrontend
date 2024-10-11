@@ -27,11 +27,11 @@ const About = () => {
 					</p>
 				</div>
 
-				<div className="mt-8 text-white">
+				{/* <div className="mt-8 text-white">
 					<h2 className="mb-4 text-2xl font-bold">Contact Us</h2>
 					<p className="">
 						If you have any questions or would like to get involved,
-						please reach out to us at{" "}
+						please reach out to us at
 						<Link
 							to="mailto:contact@example.com"
 							className="text-blue-500"
@@ -40,7 +40,7 @@ const About = () => {
 						</Link>
 						.
 					</p>
-				</div>
+				</div> */}
 
 				{/* <hr className="my-8 border-gray-300" />
 

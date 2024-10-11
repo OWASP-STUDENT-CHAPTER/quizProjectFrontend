@@ -9,7 +9,7 @@ export const login = async (email, password) => {
 			password,
 		});
 		if (data.statusCode === 500) {
-			toast.error("User Doesn't Exist");
+			toast.error("Email or Password is Incorrect");
 		} else if (data.Email && data.Password) {
 			toast.success("Logged In Successfully");
 		}

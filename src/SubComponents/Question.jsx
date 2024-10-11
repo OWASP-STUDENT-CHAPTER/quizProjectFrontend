@@ -38,7 +38,7 @@ const Question = ({
 						/>
 						<label
 							className="ml-2 text-gray-700"
-							for={`${namePrefix}-value-1`}
+							htmlFor={`${namePrefix}-value-1`}
 						>
 							{option1}
 						</label>
@@ -55,7 +55,7 @@ const Question = ({
 						/>
 						<label
 							className="ml-2 text-gray-700"
-							for={`${namePrefix}-value-2`}
+							htmlFor={`${namePrefix}-value-2`}
 						>
 							{option2}
 						</label>
@@ -72,13 +72,12 @@ const Question = ({
 						/>
 						<label
 							className="ml-2 text-gray-700"
-							for={`${namePrefix}-value-3`}
+							htmlFor={`${namePrefix}-value-3`}
 						>
 							{option3}
 						</label>
 					</div>
 					<div className="radio-input">
-						{" "}
 						<input
 							type="radio"
 							className="w-5 h-5 text-indigo-600 form-radio"
@@ -90,7 +89,7 @@ const Question = ({
 						/>
 						<label
 							className="ml-2 text-gray-700"
-							for={`${namePrefix}-value-4`}
+							htmlFor={`${namePrefix}-value-4`}
 						>
 							{option4}
 						</label>

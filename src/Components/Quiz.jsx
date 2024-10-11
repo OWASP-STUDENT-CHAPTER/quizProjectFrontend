@@ -4,11 +4,16 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Questions from "./Questions";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const Quiz = () => {
+const Quiz = ({ isQuizStarted, setIsQuizStarted }) => {
 	const videoRef = useRef(null);
 	const [isCameraActive, setIsCameraActive] = useState(false);
 	const [error, setError] = useState(null);
+
+	const navigate = useNavigate();
+
+	// console.log(isQuizStarted, setIsQuizStarted);
 
 	useEffect(() => {
 		// Function to get the camera and microphone stream
@@ -43,13 +48,17 @@ const Quiz = () => {
 				tracks.forEach((track) => track.stop()); // Stop all tracks to release camera/mic
 			}
 		};
-	}, []);
-	{
-		isCameraActive && toast.warn("You are being invigilated now");
-	}
+	}, [isCameraActive]);
+
+	useEffect(() => {
+		if (isCameraActive) {
+			toast.warn("You are being invigilated now");
+		}
+	}, [isCameraActive]);
+
 	return (
 		<>
-			<div className="fixed top-0 right-0 flex flex-col items-center justify-center z-30">
+			<div className="fixed top-0 right-0 z-30 flex flex-col items-center justify-center">
 				<div className="text-center">
 					{error ? (
 						<p className="text-red-500">{error}</p>
@@ -61,7 +70,6 @@ const Quiz = () => {
 										ref={videoRef}
 										autoPlay
 										playsInline
-										className=""
 										style={{
 											width: "80px",
 											height: "65px",
@@ -70,7 +78,9 @@ const Quiz = () => {
 								</div>
 							) : (
 								<div>
-									<p className="text-white">Accessing camera and microphone...</p>
+									<p className="text-white">
+										Accessing camera and microphone...
+									</p>
 									<div className="blinking-dots">
 										<div className="dot"></div>
 										<div className="dot"></div>
