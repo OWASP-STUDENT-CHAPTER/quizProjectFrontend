@@ -17,10 +17,24 @@ import UpdateStudent from "./Components/Admin/UpdateStudent";
 const App = () => {
 	const navigate = useNavigate();
 	// const [isQuizStarted, setIsQuizStarted] = useState(10);
+
+	let given = localStorage.getItem("given");
+
 	useEffect(() => {
 		const Authenticated = isAuthenticated();
 		if (!Authenticated) {
 			navigate("/login");
+		}
+	}, []);
+
+	useEffect(() => {
+		const navigationType =
+			window.performance.getEntriesByType("navigation")[0].type;
+
+		if (navigationType === "reload") {
+			// console.log("Page was refreshed");
+			// You can handle the refresh event here
+			localStorage.setItem("given", "done");
 		}
 	}, []);
 
@@ -57,7 +71,7 @@ const App = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				{/* {isQuizStarted <= 100 && ( */}
-				<Route
+				{/* <Route
 					path="/quiz"
 					element={
 						<Quiz
@@ -65,8 +79,20 @@ const App = () => {
 						// setIsQuizStarted={setIsQuizStarted}
 						/>
 					}
-				/>
+				/> */}
 				{/* )} */}
+
+				{given == "done" ? null : (
+					<Route
+						path="/quiz"
+						element={
+							<Quiz
+							// isQuizStarted={isQuizStarted}
+							// setIsQuizStarted={setIsQuizStarted}
+							/>
+						}
+					/>
+				)}
 				<Route path="/result" element={<Result />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/about" element={<About />} />

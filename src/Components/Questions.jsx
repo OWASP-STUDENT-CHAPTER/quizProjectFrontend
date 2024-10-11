@@ -23,7 +23,7 @@ const Questions = () => {
 
 	useEffect(() => {
 		let given = localStorage.getItem("given");
-		if (given) {
+		if (given == "done") {
 			navigate("/result");
 		}
 	});
@@ -45,7 +45,8 @@ const Questions = () => {
 		// Clear the interval when component unmounts
 		return () => {
 			clearInterval(interval);
-			handleSubmit(); // Call the function when time is up
+			localStorage.setItem("given", "done");
+			// handleSubmit(); // Call the function when time is up
 		};
 	}, []);
 
@@ -83,8 +84,8 @@ const Questions = () => {
 			}));
 			// console.log(responses)
 			let result = await submitQuizResponses(quizId, responses);
-			console.log(result);
-			localStorage.setItem("given", true);
+			// console.log(result);
+			localStorage.setItem("given", "done");
 			navigate("/result"); // Navigate to result page after successful submission
 		} catch (error) {
 			console.error("Error submitting quiz answers:", error);

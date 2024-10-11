@@ -21,6 +21,7 @@ const StartQuizButton = () => {
 				// console.log("Starting quiz...");
 				// console.log(data);
 				sessionStorage.setItem("quizId", data);
+				// console.log(data)
 				if (data) {
 					navigate("/quiz");
 				}

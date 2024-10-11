@@ -16,7 +16,7 @@ const Login = () => {
 			const userData = await login(email, password);
 			if (userData) {
 				if (userData.token) {
-					console.log(userData)
+					// console.log(userData)
 					sessionStorage.setItem("token", userData.token);
 					sessionStorage.setItem("role", userData.role);
 					sessionStorage.setItem("email", userData.email);

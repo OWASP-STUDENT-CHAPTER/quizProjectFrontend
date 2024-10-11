@@ -69,6 +69,7 @@ const Quiz = ({ isQuizStarted, setIsQuizStarted }) => {
 									<video
 										ref={videoRef}
 										autoPlay
+										muted
 										playsInline
 										style={{
 											width: "80px",
