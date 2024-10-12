@@ -8,9 +8,10 @@ const StartQuizButton = () => {
 
 	const score = sessionStorage.getItem("score");
 	const quizId = sessionStorage.getItem("quizId");
+	const given = localStorage.getItem("given");
 
 	const handleStartQuiz = async () => {
-		if (quizId || score) {
+		if (quizId || score || given === "done") {
 			navigate("/result");
 		} else {
 			// Handle logic for starting the quiz (e.g., navigate to quiz page)
@@ -46,7 +47,9 @@ const StartQuizButton = () => {
 				className="px-10 py-3 text-white bg-opacity-0 border border-gray-100 rounded-md shadow-lg shadow-black bg-gray-0 bg-clip-padding backdrop-filter backdrop-blur-sm z-30 bg-gray-400 hover:text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-black after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 text-xl"
 			>
 				<strong className="strong">
-					{score || quizId ? "Result" : "Start Quiz"}
+					{score || quizId || given == "done"
+						? "Result"
+						: "Start Quiz"}
 				</strong>
 				<div id="container-stars">
 					<div id="stars"></div>
