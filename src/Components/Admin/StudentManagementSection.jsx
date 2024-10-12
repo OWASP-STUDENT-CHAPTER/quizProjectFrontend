@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { deleteStudent, getAllStudent } from "../../Axios/AdminServices";
+
 import { Link } from "react-router-dom";
 
 function StudentManagementSection() {
@@ -27,13 +28,13 @@ function StudentManagementSection() {
 
 	const deleteUser = async (userId) => {
 		try {
-			const confirmDelete = window.confirm(
-				"Are you sure you want to delete this user?"
-			);
-			if (confirmDelete) {
-				await deleteStudent(userId);
-				fetchUsers();
-			}
+			// const confirmDelete = window.confirm(
+			// 	"Are you sure you want to delete this user?"
+			// );
+			// if (true) {
+			await deleteStudent(userId);
+			fetchUsers();
+			// }
 		} catch (error) {
 			console.error("Error deleting user:", error);
 		}
@@ -77,6 +78,7 @@ function StudentManagementSection() {
 			<table className="min-w-full text-black bg-white">
 				<thead>
 					<tr className="bg-gray-200">
+						<th className="py-2">Sr. No</th>
 						<th
 							className="py-2 cursor-pointer"
 							onClick={() => requestSort("name")}
@@ -131,14 +133,13 @@ function StudentManagementSection() {
 								user.score
 							)}`}
 						>
+							<td className="px-4 py-2">{index+1}</td>
 							<td className="px-4 py-2">{user.name}</td>
 							<td className="px-4 py-2">{user.email}</td>
 							<td className="px-4 py-2">{user.gender}</td>
 							<td
 								className={`py-2 px-4 ${
-									user.role === "ADMIN"
-										? "bg-green-500"
-										: ""
+									user.role === "ADMIN" ? "bg-green-500" : ""
 								}`}
 							>
 								{user.role}

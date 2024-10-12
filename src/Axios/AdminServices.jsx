@@ -24,7 +24,7 @@ export const registerStudent = async (userData) => {
 export const getAllStudent = async (token) => {
 	try {
 		const { data } = await axios.get(`${BASE_URL}/public/getAllStudents`);
-		toast.success("All Students Fetched Successfully");
+		// toast.success("All Students Fetched Successfully");
 		// console.log(data);
 		return data;
 	} catch (error) {
@@ -51,7 +51,7 @@ export const deleteStudent = async (studentId) => {
 		const { data } = await axios.delete(
 			`${BASE_URL}/public/delete/${studentId}`
 		);
-		toast.error("Student Deleted Successfully");
+		// toast.error("Student Deleted Successfully");
 		return data;
 	} catch (error) {
 		toast.error(error);

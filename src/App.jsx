@@ -18,26 +18,26 @@ const App = () => {
 	const navigate = useNavigate();
 	// const [isQuizStarted, setIsQuizStarted] = useState(10);
 
-	let given = localStorage.getItem("given");
-
 	useEffect(() => {
+		localStorage.removeItem("given");
 		const Authenticated = isAuthenticated();
 		if (!Authenticated) {
 			navigate("/login");
 		}
 	}, []);
 
-	useEffect(() => {
-		const navigationType =
-			window.performance.getEntriesByType("navigation")[0].type;
+	// useEffect(() => {
+	// 	const navigationType =
+	// 		window.performance.getEntriesByType("navigation")[0].type;
 
-		if (navigationType === "reload") {
-			// console.log("Page was refreshed");
-			// You can handle the refresh event here
-			localStorage.setItem("given", "done");
-		}
-	}, []);
-
+	// 	if (navigationType === "reload") {
+	// 		// console.log("Page was refreshed");
+	// 		// You can handle the refresh event here
+	// 		localStorage.setItem("given", "done");
+	// 	}
+	// }, []);
+	
+	
 	useEffect(() => {
 		// Function to handle F5 and Ctrl+R key presses
 		const handleKeyPress = (event) => {
@@ -68,8 +68,8 @@ const App = () => {
 	return (
 		<>
 			<Routes>
-				{/* <Route path="/" element={<Home />} /> */}
-				{/* <Route path="/login" element={<Login />} /> */}
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
 				{/* {isQuizStarted <= 100 && ( */}
 				{/* <Route
 					path="/quiz"
@@ -82,7 +82,7 @@ const App = () => {
 				/> */}
 				{/* )} */}
 
-				{/* {given == "done" ? null : (
+				{/* {given == "done" ? null : ( */}
 					<Route
 						path="/quiz"
 						element={
@@ -92,11 +92,11 @@ const App = () => {
 							/>
 						}
 					/>
-				)}
+				{/* )} */}
 				<Route path="/result" element={<Result />} />
 				<Route path="/profile" element={<Profile />} />
-				<Route path="/about" element={<About />} /> */}
-				{/* {isAdmin() && (
+				<Route path="/about" element={<About />} />
+				{isAdmin() && (
 					<>
 						<Route path="/admin" element={<Admin />} />
 						<Route path="/register" element={<Register />} />
@@ -105,8 +105,8 @@ const App = () => {
 							element={<UpdateStudent />}
 						/>
 					</>
-				)} */}
-				<Route path="/" element={<NotFound />} />
+				)}
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<ToastContainer />
 		</>
