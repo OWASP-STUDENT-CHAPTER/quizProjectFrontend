@@ -2,11 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { deleteStudent, getAllStudent } from "../../Axios/AdminServices";
-
 import { Link } from "react-router-dom";
 
 function StudentManagementSection() {
 	const [users, setUsers] = useState([]);
+	const [sortConfig, setSortConfig] = useState({
+		key: "name",
+		direction: "ascending",
+	});
 
 	useEffect(() => {
 		// Fetch users data when the component mounts
@@ -16,8 +19,7 @@ function StudentManagementSection() {
 	const fetchUsers = async () => {
 		try {
 			const response = await getAllStudent();
-			// console.log(response.studentList);
-			setUsers(response.studentList); // Assuming the list of users is under the key 'ourUsersList'
+			setUsers(response.studentList);
 		} catch (error) {
 			console.error("Error fetching users:", error);
 		}
@@ -25,14 +27,11 @@ function StudentManagementSection() {
 
 	const deleteUser = async (userId) => {
 		try {
-			// Prompt for confirmation before deleting the user
 			const confirmDelete = window.confirm(
 				"Are you sure you want to delete this user?"
 			);
-
 			if (confirmDelete) {
 				await deleteStudent(userId);
-				// After deleting the user, fetch the updated list of users
 				fetchUsers();
 			}
 		} catch (error) {
@@ -40,8 +39,33 @@ function StudentManagementSection() {
 		}
 	};
 
+	const requestSort = (key) => {
+		let direction = "ascending";
+		if (sortConfig.key === key && sortConfig.direction === "ascending") {
+			direction = "descending";
+		}
+		setSortConfig({ key, direction });
+	};
+
+	const sortedUsers = [...users].sort((a, b) => {
+		if (a[sortConfig.key] < b[sortConfig.key]) {
+			return sortConfig.direction === "ascending" ? -1 : 1;
+		}
+		if (a[sortConfig.key] > b[sortConfig.key]) {
+			return sortConfig.direction === "ascending" ? 1 : -1;
+		}
+		return 0;
+	});
+
+	const getRowClassName = (score) => {
+		if (score === null || score === undefined) return "bg-red-500"; // Red for score not given
+		if (score > 10) return "bg-green-500"; // Green if score is above 10
+		if (score >= 5) return "bg-yellow-500"; // Yellow if score is between 5 and 10
+		return "bg-blue-500"; // Blue if score is below 5
+	};
+
 	return (
-		<div className="min-h-screen p-6  text-white user-management-container">
+		<div className="min-h-screen p-6 text-white user-management-container">
 			<h2 className="mb-4 text-2xl font-bold">Student Management Page</h2>
 
 			<div className="mb-6">
@@ -50,54 +74,101 @@ function StudentManagementSection() {
 				</button>
 			</div>
 
-			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-				{users &&
-					users.map((user, index) => (
-						<div
-							key={index}
-							className="p-4 bg-white rounded shadow-md"
+			<table className="min-w-full text-black bg-white">
+				<thead>
+					<tr className="bg-gray-200">
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("name")}
 						>
-							
-							<h3 className="mb-2 text-xl text-black font-semibold">
-								{user.name}
-							</h3>
-							<p className="mb-1 text-gray-700">
-								<strong>Email:</strong> {user.email}
-							</p>
-							<p className="mb-1 text-gray-700">
-								<strong>Gender:</strong> {user.gender}
-							</p>
-							<p className="mb-1 text-gray-700">
-								<strong>Role:</strong> {user.role}
-							</p>
-							<p className="mb-1 text-gray-700">
-								<strong>Branch:</strong> {user.branch}
-							</p>
-							<p className="mb-1 text-gray-700">
-								<strong>Roll No:</strong> {user.rollNo}
-							</p>
-							<p className="mb-1 text-gray-700">
-								<strong>Score:</strong> {(user.score === 0 && "0") || (user.score || "Not Given Yet")}
-							</p>
-							<p className="mb-4 text-gray-700">
-								<strong>Student ID:</strong> {user.studentId}
-							</p>
-							<div className="flex space-x-2">
+							Name
+						</th>
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("email")}
+						>
+							Email
+						</th>
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("gender")}
+						>
+							Gender
+						</th>
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("role")}
+						>
+							Role
+						</th>
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("branch")}
+						>
+							Branch
+						</th>
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("rollNo")}
+						>
+							Roll No
+						</th>
+						<th
+							className="py-2 cursor-pointer"
+							onClick={() => requestSort("score")}
+						>
+							Score
+						</th>
+						<th className="py-2">Student ID</th>
+						<th className="py-2">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{sortedUsers.map((user, index) => (
+						<tr
+							key={index}
+							className={`border-b ${getRowClassName(
+								user.score
+							)}`}
+						>
+							<td className="px-4 py-2">{user.name}</td>
+							<td className="px-4 py-2">{user.email}</td>
+							<td className="px-4 py-2">{user.gender}</td>
+							<td
+								className={`py-2 px-4 ${
+									user.role === "ADMIN"
+										? "bg-green-500"
+										: ""
+								}`}
+							>
+								{user.role}
+							</td>
+							<td className="px-4 py-2">{user.branch}</td>
+							<td className="px-4 py-2">{user.rollNo}</td>
+							<td className="px-4 py-2">
+								{(user.score === 0 && "0") ||
+									user.score ||
+									"Not Given Yet"}
+							</td>
+							<td className="px-4 py-2">{user.studentId}</td>
+							<td className="px-4 py-2">
 								<button
-									className="px-3 py-1 text-white bg-red-500 rounded hover:bg-red-600"
+									className="px-3 py-1 text-white bg-gray-600 rounded hover:bg-red-600"
 									onClick={() => deleteUser(user.studentId)}
 								>
 									Delete
 								</button>
-								{/* <button className="px-3 py-1 text-white bg-yellow-500 rounded hover:bg-yellow-600">
-									<Link to={`/update-user/${user.studentId}`}>
-										Update
-									</Link>
-								</button> */}
-							</div>
-						</div>
+								{/* Uncomment to enable Update functionality
+                                <button className="px-3 py-1 text-white bg-yellow-500 rounded hover:bg-yellow-600">
+                                    <Link to={`/update-user/${user.studentId}`}>
+                                        Update
+                                    </Link>
+                                </button> */}
+							</td>
+						</tr>
 					))}
-			</div>
+				</tbody>
+			</table>
 		</div>
 	);
 }

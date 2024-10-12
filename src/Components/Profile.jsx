@@ -53,14 +53,14 @@ function Profile() {
 										{profileInfo.email}
 									</dd>
 								</div>
-								<div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+								{/* <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dt className="text-xl font-medium text-gray-500">
 										Gender
 									</dt>
 									<dd className="mt-1 text-lg text-gray-900 sm:col-span-2">
 										{profileInfo.gender}
 									</dd>
-								</div>
+								</div> */}
 								<div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dt className="text-xl font-medium text-gray-500">
 										Branch
