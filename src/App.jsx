@@ -68,8 +68,8 @@ const App = () => {
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/login" element={<Login />} />
+				{/* <Route path="/" element={<Home />} /> */}
+				{/* <Route path="/login" element={<Login />} /> */}
 				{/* {isQuizStarted <= 100 && ( */}
 				{/* <Route
 					path="/quiz"
@@ -83,7 +83,7 @@ const App = () => {
 				{/* )} */}
 
 				{/* {given == "done" ? null : ( */}
-					<Route
+					{/* <Route
 						path="/quiz"
 						element={
 							<Quiz
@@ -91,12 +91,12 @@ const App = () => {
 							// setIsQuizStarted={setIsQuizStarted}
 							/>
 						}
-					/>
+					/> */}
 				{/* )} */}
-				<Route path="/result" element={<Result />} />
-				<Route path="/profile" element={<Profile />} />
-				<Route path="/about" element={<About />} />
-				{isAdmin() && (
+				{/* <Route path="/result" element={<Result />} /> */}
+				{/* <Route path="/profile" element={<Profile />} /> */}
+				{/* <Route path="/about" element={<About />} /> */}
+				{/* {isAdmin() && (
 					<>
 						<Route path="/admin" element={<Admin />} />
 						<Route path="/register" element={<Register />} />
@@ -105,8 +105,8 @@ const App = () => {
 							element={<UpdateStudent />}
 						/>
 					</>
-				)}
-				<Route path="*" element={<NotFound />} />
+				)} */}
+				<Route path="/" element={<NotFound />} />
 			</Routes>
 			<ToastContainer />
 		</>
